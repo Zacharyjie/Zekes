@@ -6,7 +6,7 @@
 
 #set ntp
 yum install vim wget ntpdate -y
-echo "*/50 * * * * /usr/sbin/ntpdate pool.ntp.org > /dev/null 2>&1" > /var/spool/cron/root
+echo "*/50 * * * * /usr/sbin/ntpdate cn.pool.ntp.org > /dev/null 2>&1" > /var/spool/cron/root
 service crond restart
 
 #shutdown iptables
@@ -79,39 +79,40 @@ EOF
 /sbin/sysctl -p
 [ $? = 0 ] && echo "sysctl set OK!!"
 
-set_user() {
+#set_user() {
 #add user
-id ops
-if [ $? != 0 ];then
-useradd ops
-echo g+*=xzl+x3?kN0ps|passwd --stdin ops
-fi
+#id ops
+#if [ $? != 0 ];then
+#useradd ops
+#echo g+*=xzl+x3?kN0ps|passwd --stdin ops
+#fi
+
 #set ssh
 sed -i 's%#PermitRootLogin yes%PermitRootLogin no%' /etc/ssh/sshd_config #禁止root远程登录
-sed -i 's/^GSSAPIAuthentication yes$/GSSAPIAuthentication no/' /etc/ssh/sshd_config
+sed -i 's/^GSSAPIAuthentication yes$/GSSAPIAuthentication no/' /etc/ssh/sshd_config #ssh登录加速
 sed -i 's/#UseDNS yes/UseDNS no/' /etc/ssh/sshd_config
 
+#用户ops sudo权限
 if ! grep ops /etc/sudoers;then
-echo "ops ALL=(root) NOPASSWD: ALL" >> /etc/sudoers
+echo "ops ALL=(root) NOPASSWD: ALL" >> /etc/sudoers.d/ops
 fi
-}
-#set_user
 
 #set timezone
 echo "y" | cp -a /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-touch /var/log/user_log.log && chmod a+w /var/log/user_log.log
-echo "alias grep='grep --color=auto'" > /etc/profile.d/colorgrep.sh
-echo "export PROMPT_COMMAND='{ date \"+%Y-%m-%d %T ##### [user=\$(whoami)] \$(who am i |awk \"{print \\\$2\\\" \\\"\\\$5}\") #### [\`pwd\`]:\$(history 1 | { read x cmd; echo \"\$cmd\"; })\"; } >> /var/log/user_log.log'" > /etc/profile.d/log_user.sh
-
-source /etc/profile
+#touch /var/log/user_log.log && chmod a+w /var/log/user_log.log
+#echo "alias grep='grep --color=auto'" > /etc/profile.d/colorgrep.sh
+#echo "export PROMPT_COMMAND='{ date \"+%Y-%m-%d %T ##### [user=\$(whoami)] \$(who am i |awk \"{print \\\$2\\\" \\\"\\\$5}\") #### [\`pwd\`]:\$(history 1 | { read x cmd; echo \"\$cmd\"; })\"; } >> /var/log/user_log.log'" > /etc/profile.d/log_user.sh
 
 #切割用户操作日志
-cat > /etc/logrotate.d/user_log << EOF
-/var/log/user_log.log {
-weekly
-rotate 4
+#cat > /etc/logrotate.d/user_log << EOF
+#/var/log/user_log.log {
+#weekly
+#rotate 4
 #size 100m
-}
-EOF
-[ $? = 0 ] && echo "/etc/logrotate.d/user_log is ok"
+#}
+#EOF
+#[ $? = 0 ] && echo "/etc/logrotate.d/user_log is ok"
+
+#重置环境变量
+source /etc/profile
