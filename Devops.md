@@ -1,6 +1,6 @@
 
-**Bootstrapping:   **&emsp;Kickstart、Cobbler、rpmbuild/xen、kvm、lxc、Openstack、 Cloudstack、Opennebula、Eucalyplus、RHEV<br>
-**配置类工具:      **&emsp;Capistrano、Chef、puppet、func、salstack、Ansible、rundeck、CFengine、Rudder<br>
+**Bootstrapping:**&emsp;Kickstart、Cobbler、rpmbuild/xen、kvm、lxc、Openstack、 Cloudstack、Opennebula、Eucalyplus、RHEV<br>
+**配置类工具:**&emsp;Capistrano、Chef、puppet、func、salstack、Ansible、rundeck、CFengine、Rudder<br>
 **自动化构建和测试:**&emsp;Ant、Maven、Selenium、PyUnit、QUnit、JMeter、Gradle、PHPUnit<br>
 **监控类工具:      **&emsp;Cacti、Nagios(Icinga)、Zabbix、基于时间监控前端Grafana、Mtop、MRTG(网络流量监控图形工具)、[Monit](https://mmonit.com/) 、Diamond+Graphite+Grafana<br>
 **微服务平台:**&emsp;OpenShift、Cloud Foundry、Kubernetes、Mesosphere<br>
