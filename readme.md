@@ -17,7 +17,7 @@
 &emsp;&emsp;ELK(ElasticSearch-Logstash-Kibana)、flunme、fluentd、logkafka  
 **9、Redis集群**  
 &emsp;&emsp;Dynomite、Twemproxy、codis/SSDB/Aerospike、Redis Cluster  
-**10、Mysql Proxy** 
+**10、Mysql Proxy**   
 &emsp;&emsp;Mycat、MHA、Mysql主从、cobar、Oceanus  
 **11、Mysql逻辑备份**  
 &emsp;&emsp;mysqldump、mysqlhotcopy、mydumper、MySQLDumper  
