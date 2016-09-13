@@ -13,3 +13,7 @@
 &emsp;&emsp;Go、[Jenkins](https://jenkins.io/index.html)、[Gitlab](https://about.gitlab.com/downloads/)、facebook、代码审查工具phabricator、spinnaker、[Gogs](https://gogs.io/)  
 **7、日志系统**  
 &emsp;&emsp;ELK(ElasticSearch-Logstash-Kibana)、flunme、fluentd  
+**8、Mysql逻辑备份**  
+&emsp;&emsp;mysqldump、mysqlhotcopy、mydumper、MySQLDumper  
+**9、Mysql物理备份**
+&emsp;&emsp;Xtrabackup、LVM Snapshot  
