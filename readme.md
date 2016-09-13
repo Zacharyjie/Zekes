@@ -1,4 +1,4 @@
-# Devops学习工具
+# Devops学习
 **1、自动化构建和测试**  
 &emsp;&emsp;Ant、Maven、Selenium、PyUnit、QUnit、JMeter、Gradle、PHPUnit  
 **2、Platform-as-a-Service:平台即服务**  
@@ -10,6 +10,6 @@
 **5、服务发现**  
 &emsp;&emsp;SmartStack、etcd、consul、zookeeper  
 **6、持续集成**  
-&emsp;&emsp;Go、Jenkins、Gitlab、facebook、代码审查工具phabricator、spinnaker、Gogs  
+&emsp;&emsp;Go、[Jenkins](https://jenkins.io/index.html)、[Gitlab](https://about.gitlab.com/downloads/)、facebook、代码审查工具phabricator、spinnaker、[Gogs](https://gogs.io/)  
 **7、日志系统**  
 &emsp;&emsp;ELK(ElasticSearch-Logstash-Kibana)、flunme、fluentd  
