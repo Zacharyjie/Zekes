@@ -14,8 +14,12 @@
 **7、持续集成**  
 &emsp;&emsp;Go、[Jenkins](https://jenkins.io/index.html)、[Gitlab](https://about.gitlab.com/downloads/)、facebook、代码审查工具phabricator、spinnaker、[Gogs](https://gogs.io/)  
 **8、日志系统**  
-&emsp;&emsp;ELK(ElasticSearch-Logstash-Kibana)、flunme、fluentd  
-**9、Mysql逻辑备份**  
+&emsp;&emsp;ELK(ElasticSearch-Logstash-Kibana)、flunme、fluentd、logkafka  
+**9、Redis集群**  
+&emsp;&emsp;Dynomite、Twemproxy、codis/SSDB/Aerospike、Redis Cluster  
+**10、Mysql Proxy** 
+&emsp;&emsp;Mycat、MHA、Mysql主从、cobar、Oceanus  
+**11、Mysql逻辑备份**  
 &emsp;&emsp;mysqldump、mysqlhotcopy、mydumper、MySQLDumper  
-**10、Mysql物理备份**   
+**11、Mysql物理备份**   
 &emsp;&emsp;Xtrabackup、LVM Snapshot  
