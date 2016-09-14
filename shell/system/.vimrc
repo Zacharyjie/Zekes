@@ -1,4 +1,5 @@
 " 插入模式
+"
 set pastetoggle=<F9>
 " set completeopt=preview,menu
 " 映射全选+复制 ctrl+a
