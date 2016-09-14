@@ -21,5 +21,5 @@
 &emsp;&emsp;Mycat、MHA、Mysql主从、cobar、Oceanus  
 **11、Mysql逻辑备份**  
 &emsp;&emsp;mysqldump、mysqlhotcopy、mydumper、MySQLDumper  
-**11、Mysql物理备份**   
+**12、Mysql物理备份**   
 &emsp;&emsp;Xtrabackup、LVM Snapshot  
