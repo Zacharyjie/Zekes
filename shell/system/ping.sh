@@ -16,3 +16,4 @@ do
             echo "$NETWORK.$HOST" >> /shell/$YESTERDAY-DOWN.txt
         fi
 done
+
