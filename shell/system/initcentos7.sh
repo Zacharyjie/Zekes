@@ -2,8 +2,7 @@
 #
 # Script Name: initSystem.sh
 # Description: setup linux system init.
-# Author: Zacharyjie Zhao - zachary.zxj@outlook.com
-#  
+# Author: Zacharyjie Zhao - zachary.zxj@outlook.com 
 #设置系统环境变量
 export PATH=$PATH:/bin:/sbin:/usr/sbin
 export LANG="zh_CN.GB18030"

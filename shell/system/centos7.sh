@@ -1,5 +1,6 @@
 #! /bin/sh
 
+set -e
 #set DNS
 #echo "nameserver 202.96.209.133" >> /etc/resolv.conf
 #echo "nameserver 114.114.114.114" >> /etc/resolv.conf
