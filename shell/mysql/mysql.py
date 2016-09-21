@@ -2,10 +2,10 @@
 import pymysql.cursors
 
 db = pymysql.connect(	
-					host='172.16.100.100',
-                    user='root',
-					password='123456',
-                    db='mysql',
+			host='172.16.100.100',
+                	user='root',
+			password='123456',
+                	db='mysql',
 					)
 #	cursor.execute("show variables like '%max_connections%';")
 cursor = db.cursor()
