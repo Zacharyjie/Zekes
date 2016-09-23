@@ -7,7 +7,7 @@ import sys
 #mail_to_list = ['lihuipeng@xxx.com',]
 mail_host = 'smtp.exmail.qq.com'
 mail_user = 'qinming@gshopper.com'
-mail_pass = 'Zx19931120'
+mail_pass = 'password'
 me = 'qinming@gshopper.com'
 def send_mail(to_list,subject,content):
     msg = MIMEText(content)
