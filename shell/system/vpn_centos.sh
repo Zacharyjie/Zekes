@@ -10,17 +10,14 @@ clear
 ########################################################################
 ##    LNMP/LAMP/LANMP for CentOS/RadHat 5+ Debian 6+ and Ubuntu 12+    #
 ##            Installs a PPTP VPN-only system for CentOS               #
-## For more information please visit https://blog.linuxeye.com/31.html #
 ########################################################################
 #"
 
 [ ! -e '/usr/bin/curl' ] && yum -y install curl
 
-VPN_IP=`curl ipv4.icanhazip.com`
-
+VPN_IP=`zoomshadow.cn`
 VPN_USER="qinming"
 VPN_PASS="qinming"
-
 VPN_LOCAL="192.168.0.150"
 VPN_REMOTE="192.168.0.151-200"
 
