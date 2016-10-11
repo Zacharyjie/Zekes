@@ -6,11 +6,11 @@ set -o pipefail
 [ $(id -u) != "0" ] && { echo -e "\033[31mError: You must be root to run this script\033[0m"; exit 1; } 
 export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 clear
-
+#安装KVM软件。
 yum -y install qemu-kvm libvirt python-virtinst bridge-utils
 yum update -y device-mapper
-
-#[ `lsmod | grep -c kvm` != "2" ] && { echo -e "\033[31mError: KVM Model not be install!!\033[0m"; exit 1; } 
+#判断kvm model是否完成。
+[ `lsmod | grep -c kvm` != "2" ] && { echo -e "\033[31mError: KVM Model not be install!!\033[0m"; exit 1; } 
 #更改网卡环境变量
 ETH=`route | grep default | awk '{print $NF}'`
 ETHD="br`route | grep default | awk '{print $NF}'| sed -r 's/[^0-9.]+//g'`"
