@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 MYSQL_USER='zabbix'
 MYSQL_PWD='ALQrGZKWdhjwOJIl'
@@ -9,7 +8,7 @@ MYSQL_CONND="/usr/bin/mysql -u${MYSQL_USER} -p${MYSQL_PWD} -P${MYSQL_PORT}"
 
 case $1 in
     ping)
-        result=`${MYSQL_CONN} ping | grep -c alive`
+        result=`${MYSQL_CONN} ping 2> /dev/null | grep -c alive`
         echo $result 
         ;;
     uptime)
