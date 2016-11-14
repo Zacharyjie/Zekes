@@ -1,0 +1,18 @@
+[Unit]
+Description=Kubernetes Kube-dns Server
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+After=kube-apiserver.service
+Requires=kube-apiserver.service
+ 
+[Service]
+WorkingDirectory=/var/lib/kube-dns
+EnvironmentFile=-/opt/k8s/config/dns
+ExecStart=/usr/bin/kube-dns \
+            $KUBE_DNS_PORT \
+            $KUBE_DNS_DOMAIN \
+            $KUBE_DNS_MASTER \
+            $KUBE_DNS_ARGS
+Restart=on-failure
+ 
+[Install]
+WantedBy=multi-user.target
