@@ -1,0 +1,6 @@
+###
+# kubernetes kube-dns config
+KUBE_DNS_PORT="--dns-port=53"
+KUBE_DNS_DOMAIN="--domain=zoom.k8s.com"
+KUBE_DNS_MASTER=--kube-master-url="http://172.16.50.100:8080"
+KUBE_DNS_ARGS=""
