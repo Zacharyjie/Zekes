@@ -17,7 +17,7 @@ EOF
 
 #set ntp
 yum install vim wget ntp ntpdate ntp-doc git openssh-server net-tools lrzsz -y
-echo "*/2 * * * * /usr/sbin/ntpdate cn.pool.ntp.org > /dev/null 2>&1" > /var/spool/cron/root
+echo "*/2 * * * * /usr/sbin/ntpdate pool.ntp.org > /dev/null 2>&1" > /var/spool/cron/root
 service crond restart
 
 #shutdown iptables
