@@ -6,7 +6,7 @@ set -e
 #echo "nameserver 114.114.114.114" >> /etc/resolv.conf
 
 #安装docker源
-cat >/etc/yum.repos.d/docker.repo << EOF
+sudo tee /etc/yum.repos.d/docker.repo <<-'EOF'
 [dockerrepo]
 name=Docker Repository
 baseurl=https://yum.dockerproject.org/repo/main/centos/7/
@@ -16,9 +16,9 @@ gpgkey=https://yum.dockerproject.org/gpg
 EOF
 
 #set ntp
-yum install vim wget ntp ntpdate ntp-doc git openssh-server net-tools lrzsz -y
+yum install vim wget ntp ntpdate ntp-doc git openssh-server net-tools lrzsz gcc gcc-c++ bind-utils -y
 echo "*/2 * * * * /usr/sbin/ntpdate pool.ntp.org > /dev/null 2>&1" > /var/spool/cron/root
-service crond restart
+systemctl restart crond
 
 #shutdown iptables
 #/etc/init.d/iptables stop
@@ -30,7 +30,7 @@ setenforce 0
 sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
 
 #shutdown ipv6
-echo -e "alias net-pf-10 off\noptions ipv6 disable=1" > /etc/modprobe.d/dist-ipv6.conf
+#echo -e "alias net-pf-10 off\noptions ipv6 disable=1" > /etc/modprobe.d/dist-ipv6.conf
 
 #/etc/init.d/postfix stop
 #chkconfig postfix off
@@ -109,7 +109,7 @@ sed -i 's/#UseDNS yes/UseDNS no/' /etc/ssh/sshd_config
 #fi
 
 #set timezone
-echo "y" | cp -a /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+#echo "y" | cp -a /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 #touch /var/log/user_log.log && chmod a+w /var/log/user_log.log
 #echo "alias grep='grep --color=auto'" > /etc/profile.d/colorgrep.sh
