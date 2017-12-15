@@ -11,7 +11,7 @@ Access_Token=$(/usr/bin/curl -s -G $Gettoken_URL | awk -F\" '{print $4}')
 Send_Message_URL="https://qyapi.weixin.qq.com/cgi-bin/chat/send?access_token=$Access_Token"
 sendWeixin_body_session(){
                   local int SessionID=1						#会话的ID
-                  local sender=ywbz.list@finchina.com		#消息发送者
+                  local sender=**********					#消息发送者
                   local message=$(echo "$@")				#过滤出zabbix传递的第三个参数
                   printf '\n{\n'
                   printf '\t"receiver": \n'
