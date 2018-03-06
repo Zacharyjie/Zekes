@@ -1,3 +1,3 @@
 ## 目录(Contents)
 
-- [Zabbix](zabbxi_scripts)
+- [Zabbix](zabbix_scripts)
