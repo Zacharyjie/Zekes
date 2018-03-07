@@ -40,7 +40,7 @@ password | 设置加密的密码 |
 timeout | 超时时间（秒）|
 fast_open | 是否启用[TCP-Fast-Open](https://github.com/shadowsocks/shadowsocks/wiki/TCP-Fast-Open) Linux内核版本需大于3.7 |
 method | 加密方法 默认的table是一种不安全的加密 此处为aes-256-cfb |
-system | [system后台文件配置](ss-local.service)|
+system | system后台文件配置[ss-local.service](ss-local.service)|
 
 * shadowsocks-libev此方法需配置多端口模式需多写份配置文件,推荐使用supervisor后台启动.
 
