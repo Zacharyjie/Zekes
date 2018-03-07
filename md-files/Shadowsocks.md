@@ -47,10 +47,10 @@ method | 加密方法 默认的table是一种不安全的加密 此处为aes-256
 ```
 yum install firewalld
 systemctl start firewalld
-firewall-cmd --permanent --zone=public --add-port=1120/tcp
-firewall-cmd --permanent --zone=public --add-port=1120/udp
-firewall-cmd --permanent --zone=public --add-port=8100/tcp
-firewall-cmd --permanent --zone=public --add-port=8100/udp
+firewall-cmd --permanent --zone=public --add-port=9100/tcp
+firewall-cmd --permanent --zone=public --add-port=9100/udp
+firewall-cmd --permanent --zone=public --add-port=9101/tcp
+firewall-cmd --permanent --zone=public --add-port=9102/udp
 firewall-cmd --reload
 ```
 #### BBR TCP加速
