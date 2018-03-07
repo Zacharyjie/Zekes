@@ -1,4 +1,4 @@
-#### Shadowsocks in centos7
+## Shadowsocks in centos7
 ```
 yum install epel-release -y
 yum install gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto udns-devel libev-devel libsodium-devel mbedtls-devel -y
@@ -15,7 +15,7 @@ repo_gpgcheck=0
 enabled=1
 enabled_metadata=1
 ```
-#### 配置文件
+### 配置文件
 ```
 vim /etc/shadowsocks-libev/config.json
 
@@ -40,10 +40,11 @@ password | 设置加密的密码 |
 timeout | 超时时间（秒）|
 fast_open | 是否启用[TCP-Fast-Open](https://github.com/shadowsocks/shadowsocks/wiki/TCP-Fast-Open) Linux内核版本需大于3.7 |
 method | 加密方法 默认的table是一种不安全的加密 此处为aes-256-cfb |
+system | [system后台文件配置](ss-local.service)|
 
 * shadowsocks-libev此方法需配置多端口模式需多写份配置文件,推荐使用supervisor后台启动.
 
-#### 防火墙配置策略
+### 防火墙配置策略
 ```
 yum install firewalld
 systemctl start firewalld
@@ -53,7 +54,7 @@ firewall-cmd --permanent --zone=public --add-port=9101/tcp
 firewall-cmd --permanent --zone=public --add-port=9102/udp
 firewall-cmd --reload
 ```
-#### BBR TCP加速
+### BBR TCP加速
 ```
 sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 sudo rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
