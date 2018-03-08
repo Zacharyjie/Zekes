@@ -5,6 +5,10 @@ import smtplib
 from email.mime.text import MIMEText
 import sys
 
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 # Need to be opened the SMTP service!!!
 #mail_to_list = 'test@qq.com'
 mail_host = 'smtp.263.net'
