@@ -27,7 +27,9 @@ php_value max_input_time 300
 php_value always_populate_raw_post_data -1
 php_value date.timezone Asia/Shanghai
 ```
+
 ### 源码安装
+源码包地址： https://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/3.4.7/zabbix-3.4.7.tar.gz/download
 ```
 ./configure --prefix=/usr/local/zabbix --enable-server --enable-agent --with-mysql --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2 --with-openipmi --with-ldap --with-ssh2 --with-openssl
 
@@ -85,10 +87,7 @@ yum install gcc gcc-c++ libxml2-devel net-snmp-devel libssh2-devel OpenIPMI-deve
 当前的问题是: {TRIGGER.NAME}
 }
 ```
-### Zabbix 告警优化
-* 触发器name支持获取变量 例如{ITEM.VALUE} {HOST.NAME}
-* 微信告警脚本字符问题,例如[sendWeixin.py](sendWeixin.py)
-#### 数据库优化
+### 数据库优化
 ```
 此优化用于8G8核主机，目前监控主机1300多 监控数目8W+ 触发器 3W+  
 [mysqld]
@@ -120,10 +119,26 @@ join_buffer_size = 2M
 thread_cache_size = 300
 thread_concurrency = 8
 ```
-
-#### 遇到的问题
+### 遇到的问题
 1. Zabbix Server 自动停止
 ```
 源码安装后  zabbix_agentd.conf修改增加字段
 /usr/local/zabbix/etc/zabbix_agentd.conf.d/
 ```
+2. Zabbix 图像断裂
+ * 调优zabbix配置文件 [zabbix_server.conf](conf/zabbix_server.conf])
+3. Zabbix 数据延迟、告警延迟
+  * 调优数据库如上（最为关键）
+  * master proxy架构
+  * 通过数据都改为主动模式，数据量过大的话 建议清理数据库表主要为
+  ```
+  history
+  history_str
+  history_uint #这表非常重要 清理时需要优化相应sql
+  trends
+  trends_uint
+  ```
+4. 告警信息字符问题
+  * 微信告警脚本字符问题，例如[sendWeixin.py](sendWeixin.py)
+5. 告警信息数据的完整性
+  * 自动发现修改触发器，触发器name支持获取变量 例如{ITEM.VALUE} {HOST.NAME}
