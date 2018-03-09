@@ -1,15 +1,31 @@
 
 ## Zabbix相关介绍
-### 3.2版本源
+### 3.4 rpm快速安装基本centos7
 ```
-rpm -ivh http://repo.zabbix.com/zabbix/3.2/rhel/7/x86_64/zabbix-release-3.2-1.el7.noarch.rpm
+rpm -i http://repo.zabbix.com/zabbix/3.4/rhel/7/x86_64/zabbix-release-3.4-2.el7.noarch.rpm
 
-```
-```
-create database zabbix character set utf8 collate utf8_bin;
-grant all privileges on zabbix.* to zabbix@localhost identified by '123456';
-flush privileges;
-zcat /usr/share/doc/zabbix-server-mysql-3.2.*/create.sql.gz | mysql -uzabbix -hhost -Ddatabase -P3306     -p123456
+yum install zabbix-server-mysql zabbix-web-mysql zabbix-agent
+
+# mysql -uroot -p
+# password
+mysql> create database zabbix character set utf8 collate utf8_bin;
+mysql> grant all privileges on zabbix.* to zabbix@localhost identified by 'password';
+mysql> quit;
+mysql> flush privileges;
+
+zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p password
+
+systemctl start zabbix-server zabbix-agent httpd
+systemctl enable zabbix-server zabbix-agent httpd
+
+vim /etc/httpd/conf.d/zabbix.conf
+php_value max_execution_time 300
+php_value memory_limit 128M
+php_value post_max_size 16M
+php_value upload_max_filesize 2M
+php_value max_input_time 300
+php_value always_populate_raw_post_data -1
+php_value date.timezone Asia/Shanghai
 ```
 ### 源码安装
 ```
