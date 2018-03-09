@@ -7,6 +7,7 @@ services:
    - "3306:3306"
   volumes:
    - ./dba:/var/lib/mysql:rw
+   - ./dba/conf:/etc/mysql/my.cnf:rw
   ulimits:
    nproc: 65535
    nofile:
@@ -28,7 +29,8 @@ services:
   ports:
    - "33306:3306"
   volumes:
-   - ./zekes:/var/lib/mysql:rw
+   - ./zard:/var/lib/mysql:rw
+   - ./zard/conf:/etc/mysql/my.cnf:rw
   ulimits:
    nproc: 65535
    nofile:
@@ -41,8 +43,8 @@ services:
   networks:
    db_net:
     aliases:
-     - zekes-server
-     - zekes-dateabse
+     - zard-server
+     - zard-dateabse
 
 networks:
   db_net:
