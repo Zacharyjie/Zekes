@@ -7,12 +7,11 @@ services:
    - "3306:3306"
   volumes:
    - ./dba:/var/lib/mysql:rw
-   - ./dba/conf:/etc/mysql/my.cnf:rw
   ulimits:
    nproc: 65535
    nofile:
-     soft: 40000
-     hard: 40000
+     soft: 65535
+     hard: 65535
   mem_limit: 4096m
   env_file:
    - .env_db_mariadb
@@ -30,12 +29,11 @@ services:
    - "33306:3306"
   volumes:
    - ./zard:/var/lib/mysql:rw
-   - ./zard/conf:/etc/mysql/my.cnf:rw
   ulimits:
    nproc: 65535
    nofile:
-     soft: 40000
-     hard: 40000
+     soft: 65535
+     hard: 65535
   mem_limit: 2048m
   env_file:
    - .env_db_zekes
