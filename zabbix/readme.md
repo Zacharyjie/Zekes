@@ -72,9 +72,38 @@ yum install gcc gcc-c++ libxml2-devel net-snmp-devel libssh2-devel OpenIPMI-deve
 ### Zabbix 告警优化
 * 触发器name支持获取变量 例如{ITEM.VALUE} {HOST.NAME}
 * 微信告警脚本字符问题,例如[sendWeixin.py](sendWeixin.py)
-#### 配置相关调优
-
-http://blog.csdn.net/jiangshan35/article/details/52314079
+#### 数据库优化
+```
+此优化用于8G8核主机，目前监控主机1300多 监控数目8W+ 触发器 3W+  
+[mysqld]
+max_connections = 3000           # 最大连接数
+max_connect_errors = 6000        # 最大错误连接数
+table_cache = 614                #     
+max_allowed_packet = 32M         # 接受数据的大小
+open_files_limit = 65535         # 打开文件数目
+long_query_time = 2000           #
+innodb_buffer_pool_size = 4096M  # innoDB使用一个缓冲池来保存索引和原始数据
+innodb_open_files = 65535        # innodb能打开的表
+#innodb_thread_concurrency = 16  # 默认设置为 0,表示不限制并发数
+query_cache_type = 1
+query_cache_size = 64M           #
+query_cache_limit = 4M           #
+query_cache_min_res_unit = 2k    #
+thread_stack = 192K              #
+tmp_table_size = 256M            #
+read_buffer_size = 1M            #
+log-queries-not-using-indexes = 0
+character-set-server = utf8
+log-error=/var/log/mariadb/error.log
+log-bin=/var/log/mariadb/bin.log
+binlog_format = mixed
+expire_logs_days = 14
+slow-query-log-file=/var/log/mariadb/slow.log
+sort_buffer_size = 4M
+join_buffer_size = 2M
+thread_cache_size = 300
+thread_concurrency = 8
+```
 
 #### 遇到的问题
 1. Zabbix Server 自动停止
