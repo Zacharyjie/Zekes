@@ -126,7 +126,7 @@ thread_concurrency = 8
 /usr/local/zabbix/etc/zabbix_agentd.conf.d/
 ```
 2. Zabbix 图像断裂
- * 调优zabbix配置文件 [zabbix_server.conf](conf/zabbix_server.conf])
+ * 调优zabbix配置文件 [zabbix_server.conf](conf/zabbix_server.conf)
 3. Zabbix 数据延迟、告警延迟
   * 调优数据库如上（最为关键）
   * master proxy架构
