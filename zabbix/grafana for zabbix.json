@@ -77,7 +77,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1520411938973,
+  "iteration": 1520933104615,
   "links": [
     {
       "asDropdown": true,
@@ -113,6 +113,8 @@
       "mode": "time",
       "offsetFromUtc": null,
       "offsetFromUtcMinutes": null,
+      "repeat": null,
+      "repeatDirection": "h",
       "timeSettings": {
         "customFormat": "HH:mm:ss",
         "fontSize": "40px",
@@ -277,7 +279,7 @@
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
         "lineColor": "rgb(31, 120, 193)",
-        "show": false
+        "show": true
       },
       "tableColumn": "",
       "targets": [
@@ -326,7 +328,7 @@
       "colorValue": false,
       "colors": [
         "#d44a3a",
-        "#0a50a1",
+        "#508642",
         "#299c46"
       ],
       "datasource": "${DS_ZABBIX}",
@@ -375,7 +377,7 @@
       ],
       "sparkline": {
         "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": true,
+        "full": false,
         "lineColor": "rgb(31, 120, 193)",
         "show": true
       },
@@ -446,7 +448,7 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 4,
+        "w": 3,
         "x": 12,
         "y": 0
       },
@@ -530,7 +532,7 @@
       "colorBackground": false,
       "colorValue": false,
       "colors": [
-        "#f9ba8f",
+        "#dedaf7",
         "rgba(237, 129, 40, 0.89)",
         "#614d93"
       ],
@@ -545,8 +547,8 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 4,
-        "x": 16,
+        "w": 3,
+        "x": 15,
         "y": 0
       },
       "id": 24,
@@ -627,14 +629,15 @@
     {
       "cacheTimeout": null,
       "colorBackground": false,
-      "colorValue": false,
+      "colorValue": true,
       "colors": [
         "#299c46",
-        "rgba(237, 129, 40, 0.89)",
+        "#f29191",
         "#d44a3a"
       ],
-      "datasource": null,
-      "format": "none",
+      "datasource": "${DS_ZABBIX}",
+      "decimals": null,
+      "format": "dateTimeAsIso",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -644,8 +647,112 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 4,
-        "x": 20,
+        "w": 3,
+        "x": 18,
+        "y": 0
+      },
+      "id": 32,
+      "interval": null,
+      "links": [],
+      "mappingType": 2,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "application": {
+            "filter": "time"
+          },
+          "functions": [],
+          "group": {
+            "filter": "$Group"
+          },
+          "host": {
+            "filter": "$Host"
+          },
+          "itServiceFilter": "$Host",
+          "item": {
+            "filter": "windows时间监控"
+          },
+          "mode": 0,
+          "options": {
+            "showDisabledItems": false
+          },
+          "refId": "A",
+          "slaProperty": {
+            "name": "OK time",
+            "property": "okTime"
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "thresholds": "70",
+      "title": "Windows当前系统时间",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "last_time"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "#299c46",
+        "#890f02",
+        "#d44a3a"
+      ],
+      "datasource": "${DS_ZABBIX}",
+      "format": "dateTimeAsIso",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 21,
         "y": 0
       },
       "id": 30,
@@ -685,11 +792,33 @@
       "tableColumn": "",
       "targets": [
         {
-          "refId": "A"
+          "application": {
+            "filter": "OS"
+          },
+          "functions": [],
+          "group": {
+            "filter": "$Group"
+          },
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "Host local time"
+          },
+          "mode": 0,
+          "options": {
+            "showDisabledItems": false
+          },
+          "refId": "A",
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
         }
       ],
       "thresholds": "",
-      "title": "Hostname",
+      "title": "Linux当前系统时间",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -699,15 +828,18 @@
           "value": "null"
         }
       ],
-      "valueName": "avg"
+      "valueName": "last_time"
     },
     {
-      "aliasColors": {},
+      "aliasColors": {
+        "Incoming network traffic on eth0": "#0a50a1",
+        "Outgoing network traffic on eth0": "#ba43a9"
+      },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
       "datasource": "${DS_ZABBIX}",
-      "fill": 1,
+      "fill": 2,
       "gridPos": {
         "h": 13,
         "w": 12,
@@ -718,28 +850,29 @@
       "legend": {
         "alignAsTable": true,
         "avg": false,
-        "current": false,
+        "current": true,
         "hideEmpty": true,
         "hideZero": true,
-        "max": false,
+        "max": true,
         "min": false,
         "rightSide": false,
         "show": true,
+        "sort": "max",
         "sortDesc": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
       "links": [],
-      "nullPointMode": "connected",
-      "percentage": true,
+      "nullPointMode": "null",
+      "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": false,
+      "stack": true,
       "steppedLine": false,
       "targets": [
         {
@@ -754,13 +887,39 @@
             "filter": "$Host"
           },
           "item": {
-            "filter": "/.*/"
+            "filter": "/Incoming.*/"
           },
           "mode": 0,
           "options": {
             "showDisabledItems": false
           },
           "refId": "A",
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        },
+        {
+          "application": {
+            "filter": "Network interfaces"
+          },
+          "functions": [],
+          "group": {
+            "filter": "$Group"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "/Outgoing.*/"
+          },
+          "mode": 0,
+          "options": {
+            "showDisabledItems": false
+          },
+          "refId": "B",
           "triggers": {
             "acknowledged": 2,
             "count": true,
@@ -774,9 +933,10 @@
       "title": "网卡流量图",
       "tooltip": {
         "shared": true,
-        "sort": 0,
+        "sort": 2,
         "value_type": "individual"
       },
+      "transparent": false,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -797,10 +957,10 @@
         {
           "format": "short",
           "label": null,
-          "logBase": 1,
+          "logBase": 10,
           "max": null,
           "min": null,
-          "show": true
+          "show": false
         }
       ]
     },
@@ -833,11 +993,14 @@
       },
       "id": 28,
       "links": [],
+      "minSpan": 1,
       "pageSize": null,
-      "scroll": true,
+      "repeat": null,
+      "repeatDirection": "v",
+      "scroll": false,
       "showHeader": true,
       "sort": {
-        "col": 0,
+        "col": 2,
         "desc": true
       },
       "styles": [
@@ -1391,7 +1554,7 @@
       "type": "alexanderzobnin-zabbix-triggers-panel"
     }
   ],
-  "refresh": false,
+  "refresh": "1m",
   "schemaVersion": 16,
   "style": "dark",
   "tags": [
@@ -1406,7 +1569,7 @@
         "hide": 0,
         "includeAll": true,
         "label": "Group",
-        "multi": true,
+        "multi": false,
         "name": "Group",
         "options": [],
         "query": "*",
@@ -1473,5 +1636,5 @@
   "timezone": "",
   "title": "Zabbix监控平台",
   "uid": "1URZCzgik",
-  "version": 25
+  "version": 40
 }
